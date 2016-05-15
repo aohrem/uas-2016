@@ -1,0 +1,18 @@
+{
+  "name": "uas-2016",
+  "version": "0.0.0",
+  "homepage": "https://github.com/aohrem/uas-2016",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.3",
+    "mapbox-gl-js": "~0.11.0"
+  }
+}

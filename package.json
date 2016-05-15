@@ -1,0 +1,17 @@
+{
+  "name": "RenAaGIS",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-bower-install": "^1.6.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^1.4.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-notify": "^0.4.5",
+    "jquery": "^2.2.3",
+    "mapbox-gl": "^0.18.0"
+  }
+}
