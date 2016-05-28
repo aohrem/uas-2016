@@ -49,6 +49,12 @@ html, body {
     box-shadow: 3px 0 35px 0 rgba(0, 0, 0, 0.3);
 }
 
+.shadow-small-inset {
+    -webkit-box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.05) inset;
+    -moz-box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.05) inset;
+    box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.05) inset;
+}
+
 .bg-color-primary {
     background-color: #689f38;
 }
@@ -144,4 +150,51 @@ h1 {
 
 p {
     line-height: 35px;
+}
+
+.layer-list-box {
+    margin-top: 105px;
+}
+
+.layer-list-box ul {
+    list-style: none;
+    padding: 0 45px;
+}
+
+.layer-list-box ul li {
+    color: #727272;
+    font-size: 25px;
+    margin: 30px 0;
+}
+
+.layer-list-head {
+    background-color: #EAEAEA;
+    color: #757575;
+    font-size: 25px;
+    padding: 15px 45px;
+    font-weight: bold;
+}
+
+#layer-list-export {
+    position: absolute;
+    bottom: 0;
+    width: 450px;
+    height: 90px;
+    padding: 45px 45px 0;
+    font-size: 25px;
+    color: #2E2E2E;
+    cursor: pointer;
+}
+
+#layer-list-export:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#layer-list-export:active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#export-img {
+    vertical-align: middle;
+    margin-right: 45px;
 }

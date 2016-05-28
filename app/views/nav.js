@@ -39,6 +39,7 @@ $(document).ready(function() {
 });
 
 function menuClick() {
+    layerListOpen = false;
     $('#menu').unbind();
     $('#menu').click(function () {
         if (layerListOpen) {

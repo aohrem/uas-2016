@@ -13,14 +13,27 @@
         <img src="images/logo.png" width="288" height="45" alt="Logo" class="logo"/>
         <img src="images/ic_more_vert_white_48dp.png" width="45" height="45" alt="More" class="icon" id="more"/>
     </div>
-    <div class="row content" id="map">
-    </div>
+    <div class="row content" id="map"></div>
     <div class="row content" id="page">
-        <div class="shadow-small box-white" id="page-box">
-        </div>
+        <div class="shadow-small box-white" id="page-box"></div>
     </div>
     <div class="shadow-large box-white" id="layer-list">
-
+        <div class="layer-list-box">
+            <div class="layer-list-head">Base Layers</div>
+            <ul>
+                <li>Satellite</li>
+                <li>OSM</li>
+            </ul>
+            <div class="layer-list-head">Additional Layers</div>
+            <ul>
+                <li>Layer 1</li>
+                <li>Layer 2</li>
+            </ul>
+        </div>
+        <div id="layer-list-export">
+            <img src="images/ic_file_download_green_48dp.png" width="45" height="45" alt="Export" id="export-img"/>
+            Export map as PDF
+        </div>
     </div>
     <div class="shadow-large box-white rounded-corners" id="more-menu">
         <ul>
