@@ -42,9 +42,17 @@ $(document).ready(function() {
     $('#layer-item-click-test').click(function () {
         if (videoPreviewOpen) {
             $('#video-preview').fadeOut();
+            $('#layer-item-click-test').removeClass('active');
+            $('#layer-list-check-test').attr('src', 'images/icons/ic_check_box_outline_grey_24dp.png');
+            $('#layer-list-type-test').attr('src', 'images/icons/ic_movie_grey_48dp.png');
+            $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_inactive.png');
             videoPreviewOpen = false;
         } else {
             $('#video-preview').fadeIn();
+            $('#layer-item-click-test').addClass('active');
+            $('#layer-list-check-test').attr('src', 'images/icons/ic_check_box_green_24dp.png');
+            $('#layer-list-type-test').attr('src', 'images/icons/ic_movie_darkgrey_48dp.png');
+            $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_active.png');
             videoPreviewOpen = true;
         }
     })
@@ -78,7 +86,7 @@ function openPage(item) {
     $('#map').fadeOut(function () {
         $('#page').fadeIn();
     });
-    $('#menu').attr("src", "images/icons/ic_keyboard_arrow_left_white_48dp.png");
+    $('#menu').attr('src', 'images/icons/ic_keyboard_arrow_left_white_48dp.png');
     menuBackClick();
     $('#page-box').load('pages/' + item + '.html');
 }
@@ -87,6 +95,6 @@ function openMap() {
     $('#page').fadeOut(function () {
         $('#map').fadeIn();
     });
-    $('#menu').attr("src", "images/icons/ic_menu_white_48dp.png");
+    $('#menu').attr('src', 'images/icons/ic_menu_white_48dp.png');
     menuClick();
 }
