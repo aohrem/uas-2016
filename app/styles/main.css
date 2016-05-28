@@ -4,6 +4,7 @@ html, body {
     padding: 0;
     color: #212121;
     font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
 }
 
 .box {
@@ -87,4 +88,20 @@ html, body {
 
 .box-white {
     background-color: #FFFFFF;
+}
+
+.rounded-corners {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+#more-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 300px;
+    z-index: 4;
+    display: none;
+    padding: 15px;
 }

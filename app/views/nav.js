@@ -1,12 +1,34 @@
 $(document).ready(function() {
-    var menuOpen = false;
+    var layerListOpen = false;
+    var moreMenuOpen = false;
+
     $('#menu').click(function () {
-        if (menuOpen) {
+        if (layerListOpen) {
             $('#layer-list').fadeOut();
-            menuOpen = false;
+            layerListOpen = false;
         } else {
             $('#layer-list').fadeIn();
-            menuOpen = true;
+            layerListOpen = true;
         }
     });
+
+    $('html').click(function () {
+        if (moreMenuOpen) {
+            $('#more-menu').fadeOut(function () {
+                moreMenuOpen = false;
+            });
+        }
+    });
+
+    $('#more').click(function () {
+        if (!moreMenuOpen) {
+            $('#more-menu').fadeIn(function () {
+                moreMenuOpen = true;
+            });
+        }
+    });
+
+    $('#more-menu').click(function (event) {
+        event.stopPropagation();
+    })
 });
