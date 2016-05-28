@@ -4,7 +4,9 @@ html, body {
     padding: 0;
     color: #212121;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
     font-size: 20px;
+    background-color: #FAFAFA;
 }
 
 .box {
@@ -30,9 +32,9 @@ html, body {
 }
 
 .shadow-small {
-    -webkit-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1);
 }
 
 .shadow-medium {
@@ -100,8 +102,46 @@ html, body {
     position: absolute;
     top: 15px;
     right: 15px;
-    width: 300px;
     z-index: 4;
     display: none;
-    padding: 15px;
+    width: 270px;
+}
+
+#more-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#more-menu ul li {
+    padding: 15px 30px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#more-menu ul li:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#more-menu ul li:active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#page {
+    display: none;
+}
+
+#page-box {
+    margin: 30px auto;
+    width: 840px;
+    padding: 15px 90px;
+    text-align: justify;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+p {
+    line-height: 35px;
 }
