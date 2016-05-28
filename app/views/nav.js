@@ -66,7 +66,7 @@ function openPage(item) {
     $('#map').fadeOut(function () {
         $('#page').fadeIn();
     });
-    $('#menu').attr("src", "images/ic_keyboard_arrow_left_white_48dp.png");
+    $('#menu').attr("src", "images/icons/ic_keyboard_arrow_left_white_48dp.png");
     menuBackClick();
     $('#page-box').load('pages/' + item + '.html');
 }
@@ -75,6 +75,6 @@ function openMap() {
     $('#page').fadeOut(function () {
         $('#map').fadeIn();
     });
-    $('#menu').attr("src", "images/ic_menu_white_48dp.png");
+    $('#menu').attr("src", "images/icons/ic_menu_white_48dp.png");
     menuClick();
 }

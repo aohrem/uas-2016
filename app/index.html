@@ -9,9 +9,9 @@
 <body>
 <div class="box">
     <div class="row header shadow-medium bg-color-primary">
-        <img src="images/ic_menu_white_48dp.png" width="45" height="45" alt="Menu" class="icon" id="menu"/>
+        <img src="images/icons/ic_menu_white_48dp.png" width="45" height="45" alt="Menu" class="icon" id="menu"/>
         <img src="images/logo.png" width="288" height="45" alt="Logo" class="logo"/>
-        <img src="images/ic_more_vert_white_48dp.png" width="45" height="45" alt="More" class="icon" id="more"/>
+        <img src="images/icons/ic_more_vert_white_48dp.png" width="45" height="45" alt="More" class="icon" id="more"/>
     </div>
     <div class="row content" id="map"></div>
     <div class="row content" id="page">
@@ -26,12 +26,51 @@
             </ul>
             <div class="layer-list-head">Additional Layers</div>
             <ul>
-                <li>Layer 1</li>
-                <li>Layer 2</li>
+                <li>
+                    <img src="images/icons/ic_check_box_green_24dp.png" width="45" height="45" alt="Active"
+                         class="layer-list-image"/>
+                    <img src="images/icons/ic_movie_darkgrey_48dp.png" width="45" height="45" alt="Video Layer"
+                         class="layer-list-image"/>
+                    Video Layer 1
+                    <img src="images/layers/preview/video_layer_active.png" width="45" height="45"
+                         alt="Video Layer Preview" class="video-layer-preview"/>
+                    <img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"
+                         class="video-layer-preview"/>
+                </li>
+                <li>
+                    <img src="images/icons/ic_check_box_outline_grey_black_24dp.png" width="45" height="45"
+                         alt="Inactive" class="layer-list-image"/>
+                    <img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"
+                         class="layer-list-image"/>
+                    Video Layer 2
+                    <img src="images/layers/preview/video_layer_inactive.png" width="45" height="45"
+                         alt="Video Layer Preview" class="video-layer-preview"/>
+                    <img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"
+                         class="video-layer-preview"/>
+                </li>
+                <li>
+                    <img src="images/icons/ic_check_box_green_24dp.png" width="45" height="45" alt="Active"
+                         class="layer-list-image"/>
+                    <img src="images/icons/ic_image_darkgrey_48dp.png" width="45" height="45" alt="Image Layer"
+                         class="layer-list-image"/>
+                    Image Layer 1
+                    <img src="images/layers/preview/image_layer_active.png" width="45" height="45"
+                         alt="Image Layer Preview" class="video-layer-preview"/>
+                </li>
+                <li>
+                    <img src="images/icons/ic_check_box_outline_grey_black_24dp.png" width="45" height="45"
+                         alt="Inactive" class="layer-list-image"/>
+                    <img src="images/icons/ic_image_grey_48dp.png" width="45" height="45" alt="Image Layer"
+                         class="layer-list-image"/>
+                    Image Layer 2
+                    <img src="images/layers/preview/video_layer_inactive.png" width="45" height="45"
+                         alt="Video Layer Preview" class="video-layer-preview"/>
+                </li>
             </ul>
         </div>
         <div id="layer-list-export">
-            <img src="images/ic_file_download_green_48dp.png" width="45" height="45" alt="Export" id="export-img"/>
+            <img src="images/icons/ic_file_download_green_48dp.png" width="45" height="45" alt="Export" id="export-img"
+                 class="layer-list-image"/>
             Export map as PDF
         </div>
     </div>
