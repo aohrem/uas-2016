@@ -1,4 +1,5 @@
 var layerListOpen = false;
+var videoPreviewOpen = false;
 
 $(document).ready(function() {
     var moreMenuOpen = false;
@@ -36,6 +37,17 @@ $(document).ready(function() {
     $('#more-menu-contact').click(function () {
         openPage('contact');
     });
+
+    // TODO: remove this
+    $('#layer-item-click-test').click(function () {
+        if (videoPreviewOpen) {
+            $('#video-preview').fadeOut();
+            videoPreviewOpen = false;
+        } else {
+            $('#video-preview').fadeIn();
+            videoPreviewOpen = true;
+        }
+    })
 });
 
 function menuClick() {

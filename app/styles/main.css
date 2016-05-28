@@ -224,3 +224,40 @@ p {
     position: absolute;
     right: 30px;
 }
+
+#video-preview {
+    width: 570px;
+    height: 307px;
+    position: absolute;
+    z-index: 2;
+    bottom: 30px;
+    right: 30px;
+    background-image: url('../images/layers/video-preview.png');
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 15px;
+    display: none;
+}
+
+#video-preview img {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#video-preview .video-progress-bar {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    height: 5px;
+    background-color: #FFFFFF;
+}
+
+#video-preview .done {
+    background-color: #07B8C9;
+    right: 350px;
+}
