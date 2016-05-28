@@ -83,6 +83,7 @@ function openPage(item) {
     if (layerListOpen) {
         $('#layer-list').fadeOut();
     }
+    $('#geo-search').fadeOut();
     $('#map').fadeOut(function () {
         $('#page').fadeIn();
     });
@@ -92,6 +93,7 @@ function openPage(item) {
 }
 
 function openMap() {
+    $('#geo-search').fadeIn();
     $('#page').fadeOut(function () {
         $('#map').fadeIn();
     });
