@@ -1,17 +1,29 @@
 <html>
 <head>
+	<meta charset='utf-8' />
 	<title>RenAaGIS</title>
 	<!-- bower:css -->
 	<!-- endbower -->
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
 	<link rel="stylesheet" href="styles/main.css"/>
+
 </head>
 <body>
-	<div id='map'></div>
- 	<!-- bower:js -->
- 	<script src="../bower_components/jquery/dist/jquery.js"></script>
- 	<script src="../bower_components/mapbox-gl-js/mapbox-gl.js"></script>
- 	<!-- endbower -->
 
+	<div id='map'></div>
+	<div id="baselayers">
+		<input id='basic' type='radio' name='rtoggle' value='basic' checked='checked'>
+		<label for='basic'>basic</label>
+		<br>
+		<input id='streets' type='radio' name='rtoggle' value='streets'>
+		<label for='streets'>streets</label>
+		<br>
+		<input id='satellite' type='radio' name='rtoggle' value='satellite'>
+		<label for='satellite'>satellite</label>
+	</div>
  	<script src="views/map.js"></script>
+
 </body>
 </html>
