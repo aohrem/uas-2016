@@ -230,16 +230,16 @@ p {
 }
 
 #video-preview {
-    width: 570px;
-    height: 307px;
+    width: 600px;
+    height: 400px;
     position: absolute;
     z-index: 2;
     bottom: 30px;
     right: 30px;
-    background-image: url('../images/layers/video-preview.png');
+    /*background-image: url('../images/layers/video-preview.png');*/
     cursor: pointer;
     color: #FFFFFF;
-    padding: 15px;
+    /*padding: 15px; */
     display: none;
 }
 
