@@ -1,5 +1,5 @@
 
-var map = L.map('map1').setView([51.94507172512329, 7.572884559631348], 13);
+var map = L.map('map').setView([51.94507172512329, 7.572884559631348], 13);
 
 /*mapboxgl.accessToken = 'pk.eyJ1IjoiZHJhZ29uc2t5IiwiYSI6Inl1TGc5eVUifQ.sMGhI3VW_pQRIqGViDXbCw';
 var map = new mapboxgl.Map({
@@ -18,7 +18,10 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 
  new L.Control.GeoSearch({
-    provider: new L.GeoSearch.Provider.OpenStreetMap()
+    provider: new L.GeoSearch.Provider.OpenStreetMap(),
+     //position: 'topright',
+     showMarker: true ,
+     retainZoomLevel: false,
 }).addTo(map);
 
 
