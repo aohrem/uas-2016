@@ -2,7 +2,7 @@
   "name": "RenAaGIS",
   "version": "0.1.0",
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^0.4.0",
     "grunt-bower-install": "^1.6.0",
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-cssmin": "^1.0.1",
