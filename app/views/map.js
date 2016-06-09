@@ -7,7 +7,7 @@ var map = new mapboxgl.Map({
 });
 
 var layerList = document.getElementById('baselayers');
-var inputs = layerList.getElementsByTagName('input');
+var inputs = layerList.getElementsByClassName('base-layer-input');
 
 function switchLayer(layer) {
     var layerId = layer.target.id;

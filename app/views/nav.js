@@ -55,7 +55,40 @@ $(document).ready(function() {
             $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_active.png');
             videoPreviewOpen = true;
         }
-    })
+    });
+
+    $('#streets').click(function (event) {
+        if ($('#streets-input').attr('src') == 'images/icons/ic_radio_button_checked_green_24dp.png') {
+            $('#streets-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+        } else {
+            $('#streets-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
+        }
+
+        $('#satellite-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+        $('#light-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+    });
+
+    $('#satellite').click(function (event) {
+        if ($('#satellite-input').attr('src') == 'images/icons/ic_radio_button_checked_green_24dp.png') {
+            $('#satellite-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+        } else {
+            $('#satellite-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
+        }
+
+        $('#streets-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+        $('#light-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+    });
+
+    $('#light').click(function (event) {
+        if ($('#light-input').attr('src') == 'images/icons/ic_radio_button_checked_green_24dp.png') {
+            $('#light-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+        } else {
+            $('#light-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
+        }
+
+        $('#satellite-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+        $('#streets-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+    });
 });
 
 function menuClick() {
