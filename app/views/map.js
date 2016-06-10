@@ -11,6 +11,9 @@ var inputs = layerList.getElementsByClassName('base-layer-input');
 
 function switchLayer(layer) {
     var layerId = layer.target.id;
+    if (layerId.toString().indexOf('-input') > -1) {
+        layerId = layerId.toString().replace('-input', '');
+    }
     map.setStyle('mapbox://styles/mapbox/' + layerId + '-v8');
 }
 

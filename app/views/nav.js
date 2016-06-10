@@ -1,3 +1,4 @@
+const baseLayers = ['streets', 'satellite', 'light'];
 var layerListOpen = false;
 var videoPreviewOpen = false;
 
@@ -57,37 +58,21 @@ $(document).ready(function() {
         }
     });
 
-    $('#streets').click(function (event) {
-        if ($('#streets-input').attr('src') == 'images/icons/ic_radio_button_checked_green_24dp.png') {
-            $('#streets-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-        } else {
-            $('#streets-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
+    var baseLayerCallback = function (event) {
+        var baseLayer = event.currentTarget.id;
+        if ($('#' + baseLayer + '-input').attr('src') != 'images/icons/ic_radio_button_checked_green_24dp.png') {
+            $('#' + baseLayer + '-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
         }
 
-        $('#satellite-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-        $('#light-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-    });
+        $.each(baseLayers, function (index, layer) {
+            if (layer != baseLayer) {
+                $('#' + layer + '-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+            }
+        });
+    };
 
-    $('#satellite').click(function (event) {
-        if ($('#satellite-input').attr('src') == 'images/icons/ic_radio_button_checked_green_24dp.png') {
-            $('#satellite-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-        } else {
-            $('#satellite-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
-        }
-
-        $('#streets-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-        $('#light-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-    });
-
-    $('#light').click(function (event) {
-        if ($('#light-input').attr('src') == 'images/icons/ic_radio_button_checked_green_24dp.png') {
-            $('#light-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-        } else {
-            $('#light-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
-        }
-
-        $('#satellite-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
-        $('#streets-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+    $.each(baseLayers, function (index, baseLayer) {
+        $('#' + baseLayer).click(baseLayerCallback);
     });
 });
 
