@@ -13,8 +13,5 @@
     "grunt-notify": "^0.4.5",
     "jquery": "^2.2.3",
     "mapbox-gl": "^0.18.0"
-  },
-  "dependencies": {
-    "leaflet": "^0.7.7"
   }
 }
