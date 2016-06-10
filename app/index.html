@@ -1,17 +1,121 @@
 <html>
 <head>
-	<title>RenAaGIS</title>
-	<!-- bower:css -->
-	<!-- endbower -->
-	<link rel="stylesheet" href="styles/main.css"/>
+    <title>RenAaGIS</title>
+    <!-- bower:css -->
+    <!-- endbower -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="styles/main.css"/>
 </head>
 <body>
-	<div id='map'></div>
- 	<!-- bower:js -->
- 	<script src="../bower_components/jquery/dist/jquery.js"></script>
- 	<script src="../bower_components/mapbox-gl-js/mapbox-gl.js"></script>
- 	<!-- endbower -->
+<div class="box">
+    <div class="row header shadow-medium bg-color-primary">
+        <img src="images/icons/ic_menu_white_48dp.png" width="45" height="45" alt="Menu" class="icon" id="menu"/>
+        <img src="images/logo.png" width="288" height="45" alt="Logo" class="logo"/>
+        <img src="images/icons/ic_more_vert_white_48dp.png" width="45" height="45" alt="More" class="icon" id="more"/>
+    </div>
+    <div class="row content" id="map"></div>
+    <div class="row content" id="page">
+        <div class="shadow-small box-white" id="page-box"></div>
+    </div>
+    <div class="shadow-large box-white" id="layer-list">
+        <div class="layer-list-box">
+            <div class="layer-list-head">Base Layers</div>
+            <ul id="baselayers">
+                <li id="streets" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_checked_green_24dp.png" width="45" height="45"
+                         id="streets-input" alt="Base Layer" class="layer-list-image"/>
+                    Streets
+                </li>
+                <li id="satellite" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         id="satellite-input" alt="Base Layer" class="layer-list-image"/>
+                    Satellite
+                </li>
+                <li id="light" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         id="light-input" alt="Base Layer" class="layer-list-image"/>
+                    Light
+                </li>
+            </ul>
+            <div  class="layer-list-head">Additional Layers</div>
+            <ul id="menu_list">
+                <!--   <li id="layer-item-click-test">
+                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45" alt="Inactive"
+                            class="layer-list-image" id="layer-list-check-test"/>
+                       <img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"
+                            class="layer-list-image" id="layer-list-type-test"/>
+                       Video Layer 1
+                       <img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"
+                            alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test"/>
+                       <img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"
+                            class="video-layer-preview"/>
+                   </li>
+                   <li>
+                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45"
+                            alt="Inactive" class="layer-list-image"/>
+                       <img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"
+                            class="layer-list-image"/>
+                       Video Layer 2
+                       <img src="images/layers/preview/video_layer_2_inactive.png" width="45" height="45"
+                            alt="Video Layer Preview" class="video-layer-preview"/>
+                       <img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"
+                            class="video-layer-preview"/>
+                   </li>
+                   <li>
+                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45"
+                            alt="Inactive" class="layer-list-image"/>
+                       <img src="images/icons/ic_image_grey_48dp.png" width="45" height="45" alt="Image Layer"
+                            class="layer-list-image"/>
+                       Image Layer 1
+                       <img src="images/layers/preview/image_layer_1_inactive.png" width="45" height="45"
+                            alt="Image Layer Preview" class="video-layer-preview"/>
+                   </li>
+                   <li>
+                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45"
+                            alt="Inactive" class="layer-list-image"/>
+                       <img src="images/icons/ic_image_grey_48dp.png" width="45" height="45" alt="Image Layer"
+                            class="layer-list-image"/>
+                       Image Layer 2
+                       <img src="images/layers/preview/image_layer_2_inactive.png" width="45" height="45"
+                            alt="Video Layer Preview" class="video-layer-preview"/>
+                   </li>-->
+            </ul>
+        </div>
+        <div id="layer-list-export">
+            <img src="images/icons/ic_file_download_green_48dp.png" width="45" height="45" alt="Export" id="export-img"
+                 class="layer-list-image"/>
+            Export map as PDF
+        </div>
+    </div>
+    <div class="shadow-large box-white rounded-corners" id="more-menu">
+        <ul>
+            <li id="more-menu-links">Links</li>
+            <li id="more-menu-info">Information</li>
+            <li id="more-menu-help">Help</li>
+            <li id="more-menu-contact">Contact</li>
+        </ul>
+    </div>
 
- 	<script src="views/map.js"></script>
+
+    <video controls id="video-preview" class="shadow-medium">
+        <!--<source src="http://giv-disaster.uni-muenster.de/georefvideo/php/uploads/GEO1_20140504_155733.mp4" type="video/mp4">-->
+    </video>
+
+    <!-- <div id="video-preview" class="shadow-medium">
+         Video Layer 1
+         <img src="images/icons/ic_play_arrow_white_128dp.png" width="144" height="144" alt="Play"/>
+         <div class="video-progress-bar"></div>
+         <div class="video-progress-bar done"></div>
+     </div>-->
+    <input type="text" class="shadow-medium box-white rounded-corners" id="geo-search" title="Search for a location ..."
+           placeholder="Search for a location ..."/>
+</div>
+<!-- bower:js -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/mapbox-gl-js/mapbox-gl.js"></script>
+<!-- endbower -->
+
+<script src="views/nav.js"></script>
+<script src="views/map.js"></script>
 </body>
 </html>
