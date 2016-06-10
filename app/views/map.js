@@ -1,7 +1,22 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHJhZ29uc2t5IiwiYSI6Inl1TGc5eVUifQ.sMGhI3VW_pQRIqGViDXbCw';
 var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v8', //stylesheet location
-    center: [7.572884559631348, 51.94507172512329], // starting position
-    zoom: 16 // starting zoom
+    container: 'map',
+    style: 'mapbox://styles/mapbox/basic-v8',
+    zoom: 14,
+    center: [7.5728, 51.9450]
 });
+
+var layerList = document.getElementById('baselayers');
+var inputs = layerList.getElementsByClassName('base-layer-input');
+
+function switchLayer(layer) {
+    var layerId = layer.target.id;
+    if (layerId.toString().indexOf('-input') > -1) {
+        layerId = layerId.toString().replace('-input', '');
+    }
+    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v8');
+}
+
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].onclick = switchLayer;
+}

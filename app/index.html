@@ -20,21 +20,21 @@
     <div class="shadow-large box-white" id="layer-list">
         <div class="layer-list-box">
             <div class="layer-list-head">Base Layers</div>
-            <ul>
-                <li>
-                    <img src="images/icons/ic_radio_button_checked_green_24dp.png" width="45" height="45" alt="Active"
-                         class="layer-list-image"/>
-                    Mapbox
+            <ul id="baselayers">
+                <li id="streets" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_checked_green_24dp.png" width="45" height="45"
+                         id="streets-input" alt="Base Layer" class="layer-list-image"/>
+                    Streets
                 </li>
-                <li>
+                <li id="satellite" class="base-layer-input">
                     <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
-                         alt="Inctive" class="layer-list-image"/>
-                    OpenStreetMap
+                         id="satellite-input" alt="Base Layer" class="layer-list-image"/>
+                    Satellite
                 </li>
-                <li>
+                <li id="light" class="base-layer-input">
                     <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
-                         alt="Inctive" class="layer-list-image"/>
-                    Google Satellite
+                         id="light-input" alt="Base Layer" class="layer-list-image"/>
+                    Light
                 </li>
             </ul>
             <div class="layer-list-head">Additional Layers</div>
