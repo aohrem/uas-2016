@@ -40,25 +40,6 @@ $(document).ready(function() {
     $('#more-menu-contact').click(function () {
         openPage('contact');
     });
-
-    /*// TODO: remove this
-     $('#layer-item-click-test').click(function () {
-     if (videoPreviewOpen) {
-     $('#video-preview').fadeOut();
-     $('#layer-item-click-test').removeClass('active');
-     $('#layer-list-check-test').attr('src', 'images/icons/ic_check_box_outline_grey_24dp.png');
-     /!*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_grey_48dp.png');
-     $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_inactive.png');*!/
-     videoPreviewOpen = false;
-     } else {
-     $('#video-preview').fadeIn();
-     $('#layer-item-click-test').addClass('active');
-     $('#layer-list-check-test').attr('src', 'images/icons/ic_check_box_green_24dp.png');
-     /!*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_darkgrey_48dp.png');
-     $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_active.png');*!/
-     videoPreviewOpen = true;
-     }
-     })*/
     
     var baseLayerCallback = function (event) {
         var baseLayer = event.currentTarget.id;
@@ -83,14 +64,14 @@ var lastIndex
 function showVideo(index) {
     if (videoPreviewOpen) {
         $('#video-preview').fadeOut();
+        $('#video-controls').fadeOut();
         $('#layer-item-click-test'+lastIndex).removeClass('active');
         $('#layer-list-check-test'+lastIndex).attr('src', 'images/icons/ic_check_box_outline_grey_24dp.png');
-        /*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_grey_48dp.png');
-         $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_inactive.png');*/
 
         var videoUrl = String(videoArray[0][index].videourl);
         $('#video-preview').attr('src', videoUrl);
         $('#video-preview').fadeIn();
+        $('#video-controls').fadeIn();
         $('#layer-item-click-test'+index).addClass('active');
         $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_check_box_green_24dp.png');
         videoPreviewOpen = true;
@@ -98,11 +79,9 @@ function showVideo(index) {
         var videoUrl = String(videoArray[0][index].videourl);
         $('#video-preview').attr('src', videoUrl);
         $('#video-preview').fadeIn();
+        $('#video-controls').fadeIn();
         $('#layer-item-click-test'+index).addClass('active');
         $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_check_box_green_24dp.png');
-
-        /*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_darkgrey_48dp.png');
-         $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_active.png');*/
         videoPreviewOpen = true;
     }
     lastIndex = index;
@@ -164,7 +143,7 @@ function loadVideosFromFTP(){
                 '<img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45" alt="Inactive"' +
                 ' class="layer-list-image" id="layer-list-check-test'+index+'"/>' +
                 '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
-                ' class="layer-list-image" id="layer-list-type-test'+index+'"/>' + video.name +
+                ' class="layer-list-image" id="layer-list-type-test'+index+'"/>' + video.name.substring(0, 16) +
                 '<img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"' +
                 ' alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test'+index+'"/>' +
                 '<img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"' +

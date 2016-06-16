@@ -236,34 +236,53 @@ p {
     z-index: 2;
     bottom: 30px;
     right: 30px;
-    /*background-image: url('../images/layers/video-preview.png');*/
     cursor: pointer;
     color: #FFFFFF;
-    /*padding: 15px; */
     display: none;
 }
 
-#video-preview img {
+#video-controls {
+    z-index: 3;
     position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+}
+
+#video-controls #play-pause-button {
+    width: 600px;
+    height: 400px;
+    position: absolute;
     bottom: 0;
+    right: 0;
+    background: url('../images/icons/ic_play_arrow_white_128dp.png') no-repeat center;
+    border: none;
+    z-index: 4;
+    cursor: pointer;
 }
 
-#video-preview .video-progress-bar {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+#video-controls #progress-bar {
     height: 5px;
-    background-color: #FFFFFF;
+    margin: 0 15px 15px 15px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    width: 570px;
+    border: none;
+    background: #07B8C9;
 }
 
-#video-preview .done {
-    background-color: #07B8C9;
-    right: 350px;
+progress::-moz-progress-bar {
+    background: #07B8C9;
+}
+
+progress::-webkit-progress-bar {
+    background: #FFFFFF;
+}
+
+progress::-webkit-progress-value {
+    background: #07B8C9;
 }
 
 #geo-search {
