@@ -84,7 +84,7 @@ function showVideo(index) {
     if (videoPreviewOpen) {
         $('#video-preview').fadeOut();
         $('#layer-item-click-test'+lastIndex).removeClass('active');
-        $('#layer-list-check-test'+lastIndex).attr('src', 'images/icons/ic_check_box_outline_grey_24dp.png');
+        $('#layer-list-check-test'+lastIndex).attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
         /*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_grey_48dp.png');
          $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_inactive.png');*/
 
@@ -92,14 +92,14 @@ function showVideo(index) {
         $('#video-preview').attr('src', videoUrl);
         $('#video-preview').fadeIn();
         $('#layer-item-click-test'+index).addClass('active');
-        $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_check_box_green_24dp.png');
+        $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
         videoPreviewOpen = true;
     } else {
         var videoUrl = String(videoArray[0][index].videourl);
         $('#video-preview').attr('src', videoUrl);
         $('#video-preview').fadeIn();
         $('#layer-item-click-test'+index).addClass('active');
-        $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_check_box_green_24dp.png');
+        $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
 
         /*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_darkgrey_48dp.png');
          $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_active.png');*/
@@ -161,7 +161,7 @@ function loadVideosFromFTP(){
         $.each(videoArray[0], function(index, video) {
             // In this point the
             $('#video-list').append('<li id="layer-item-click-test'+index+'" onClick="showVideo('+index+')">' +
-                '<img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45" alt="Inactive"' +
+                '<img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45" alt="Inactive"' +
                 ' class="layer-list-image" id="layer-list-check-test'+index+'"/>' +
                 '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
                 ' class="layer-list-image" id="layer-list-type-test'+index+'"/>' + video.name +
