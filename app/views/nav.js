@@ -77,7 +77,6 @@ $(document).ready(function() {
         $('#' + baseLayer).click(baseLayerCallback);
     });
 });
-});
 
 var lastIndex
 
@@ -161,7 +160,7 @@ function loadVideosFromFTP(){
 
         $.each(videoArray[0], function(index, video) {
             // In this point the
-            $('#menu_list').append('<li id="layer-item-click-test'+index+'" onClick="showVideo('+index+')">' +
+            $('#video-list').append('<li id="layer-item-click-test'+index+'" onClick="showVideo('+index+')">' +
                 '<img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45" alt="Inactive"' +
                 ' class="layer-list-image" id="layer-list-check-test'+index+'"/>' +
                 '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
