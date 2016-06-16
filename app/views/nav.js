@@ -83,14 +83,14 @@ var lastIndex
 function showVideo(index) {
     if (videoPreviewOpen) {
         $('#video-preview').fadeOut();
+        $('#video-controls').fadeOut();
         $('#layer-item-click-test'+lastIndex).removeClass('active');
         $('#layer-list-check-test'+lastIndex).attr('src', 'images/icons/ic_check_box_outline_grey_24dp.png');
-        /*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_grey_48dp.png');
-         $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_inactive.png');*/
 
         var videoUrl = String(videoArray[0][index].videourl);
         $('#video-preview').attr('src', videoUrl);
         $('#video-preview').fadeIn();
+        $('#video-controls').fadeIn();
         $('#layer-item-click-test'+index).addClass('active');
         $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_check_box_green_24dp.png');
         videoPreviewOpen = true;
@@ -98,11 +98,9 @@ function showVideo(index) {
         var videoUrl = String(videoArray[0][index].videourl);
         $('#video-preview').attr('src', videoUrl);
         $('#video-preview').fadeIn();
+        $('#video-controls').fadeIn();
         $('#layer-item-click-test'+index).addClass('active');
         $('#layer-list-check-test'+index).attr('src', 'images/icons/ic_check_box_green_24dp.png');
-
-        /*$('#layer-list-type-test').attr('src', 'images/icons/ic_movie_darkgrey_48dp.png');
-         $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_active.png');*/
         videoPreviewOpen = true;
     }
     lastIndex = index;

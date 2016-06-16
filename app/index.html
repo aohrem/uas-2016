@@ -100,17 +100,17 @@
         </ul>
     </div>
 
-
     <video controls id="video-preview" class="shadow-medium">
-        <!--<source src="http://giv-disaster.uni-muenster.de/georefvideo/php/uploads/GEO1_20140504_155733.mp4" type="video/mp4">-->
+        <source id="3gp_src"
+                type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+        </source>
     </video>
 
-    <!-- <div id="video-preview" class="shadow-medium">
-         Video Layer 1
-         <img src="images/icons/ic_play_arrow_white_128dp.png" width="144" height="144" alt="Play"/>
-         <div class="video-progress-bar"></div>
-         <div class="video-progress-bar done"></div>
-     </div>-->
+    <div id="video-controls">
+        <button id="play-pause-button" class="play"></button>
+        <progress id="progress-bar" min="0" max="100" value="0">0% played</progress>
+    </div>
+
     <input type="text" class="shadow-medium box-white rounded-corners" id="geo-search" title="Search for a location ..."
            placeholder="Search for a location ..."/>
 </div>
@@ -121,5 +121,6 @@
 
 <script src="views/nav.js"></script>
 <script src="views/map.js"></script>
+<script src="views/video.js"></script>
 </body>
 </html>
