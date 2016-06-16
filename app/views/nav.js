@@ -137,7 +137,7 @@ function openMap() {
 
 function loadVideosFromFTP(){
 
-    var url = 'https://api.myjson.com/bins/29d02';
+    var url = 'https://api.myjson.com/bins/2jv68';
 
     $.getJSON( url,function(data) {
         videoArray.push(data.videos);
@@ -157,5 +157,54 @@ function loadVideosFromFTP(){
 
         });
     });
-
 }
+var urlGjson = 'https://api.myjson.com/bins/53dp0';
+
+$.getJSON( urlGjson,function(data) {
+    var geojson = data
+    var route = new mapboxgl.GeoJSONSource({data: geojson });
+    map.addSource("route",route);
+
+    map.addLayer({
+        "id": "routePath",
+        "type": "line",
+        "source": "route",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#00BFFF",
+            "line-width": 10
+        }
+    });
+
+    map.addLayer({
+        "id": "routePoints",
+        "type": "symbol",
+        "source": "route",
+        "layout": {
+            "icon-image": "marker-11",
+            "text-field": "{name}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-offset": [0, 0.6],
+            "text-anchor": "top"
+        }
+    });
+
+    map.on('click', function (e) {
+        // Use queryRenderedFeatures to get features at a click event's point
+        // Use layer option to avoid getting results from other layers
+        var features = map.queryRenderedFeatures(e.point, { layers: ['routePoints'] });
+        // if there are features within the given radius of the click event,
+        // fly to the location of the click event
+        if (features.length) {
+            // Get coordinates from the symbol and center the map on those coordinates
+            map.flyTo({center: features[0].properties.coordinates});
+        }
+    });
+
+    //map.flyTo({center: });
+});
+
+console.log(map.sources);
