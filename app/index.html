@@ -103,9 +103,7 @@
     </div>
 
     <video controls id="video-preview" class="shadow-medium">
-        <source id="3gp_src"
-                type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        </source>
+        <source id="3gp_src" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
     </video>
 
     <div id="video-controls">
@@ -113,7 +111,7 @@
         <progress id="progress-bar" min="0" max="100" value="0">0% played</progress>
     </div>
 
-    <div id="geocoder-container"></div>
+    <div id="geocoder-container" class="rounded-corners shadow-small"></div>
 </div>
 <!-- bower:js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -121,8 +119,10 @@
 
 <!-- endbower -->
 
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.css' type='text/css' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.js"></script>
+<link rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.css"
+      type="text/css" />
 
 <script src="views/nav.js"></script>
 <script src="views/map.js"></script>

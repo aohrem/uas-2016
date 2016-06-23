@@ -7,7 +7,7 @@ var map = new mapboxgl.Map({
 });
 
 var geocoder = new mapboxgl.Geocoder({
-    container: 'geocoder-container' // Optional. Specify a unique container for the control to be added to.
+    container: 'geocoder-container'
 });
 
 map.addControl(geocoder);
