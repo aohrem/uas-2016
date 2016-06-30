@@ -236,166 +236,114 @@ p {
     z-index: 2;
     bottom: 30px;
     right: 30px;
-    /*background-image: url('../images/layers/video-preview.png');*/
     cursor: pointer;
     color: #FFFFFF;
-    /*padding: 15px; */
     display: none;
 }
 
-#video-preview img {
+#video-controls {
+    z-index: 3;
     position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-#video-preview .video-progress-bar {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
-    height: 5px;
-    background-color: #FFFFFF;
-}
-
-#video-preview .done {
-    background-color: #07B8C9;
-    right: 350px;
-}
-
-#geo-search {
-    width: 480px;
-    height: 75px;
-    position: absolute;
-    top: 135px;
-    right: 30px;
-    z-index: 2;
-    border: none;
-    font-size: 25px;
-    padding: 0 30px;
-    color: #212121;
-    background: #FFFFFF url('../images/icons/ic_search_green_48dp.png') no-repeat right 15px center;
-}
-
-.layer-list-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.layer-list-box ul li {
-    color: #727272;
-    font-size: 25px;
-    padding: 20px 30px;
-    border-bottom: 1px solid #B6B6B6;
-    cursor: pointer;
-}
-
-.layer-list-box ul li.active {
-    color: #212121;
-}
-
-.layer-list-box ul li:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.layer-list-box ul li:active {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.layer-list-head {
-    background-color: #EAEAEA;
-    color: #757575;
-    font-size: 25px;
-    padding: 15px 45px;
-    font-weight: bold;
-    margin-top: 30px;
-}
-
-#layer-list-export {
-    background-color: #FFFFFF;
-    position: absolute;
-    bottom: 0;
-    width: 480px;
-    height: 75px;
-    padding: 30px 30px 0;
-    font-size: 25px;
-    color: #2E2E2E;
-    cursor: pointer;
-}
-
-#layer-list-export:hover {
-    background-color: #F5F5F5;
-}
-
-#layer-list-export:active {
-    background-color: #E0E0E0;
-}
-
-.layer-list-image {
-    vertical-align: middle;
-    margin-right: 30px;
-}
-
-.video-layer-preview {
-    -webkit-clip-path: circle(22px at center);
-    -moz-clip-path: circle(22px at center);
-    clip-path: circle(22px at center);
-    margin: 0;
-    position: absolute;
-    right: 30px;
-}
-
-#video-preview {
-    width: 570px;
-    height: 307px;
-    position: absolute;
-    z-index: 2;
     bottom: 30px;
     right: 30px;
-    background-image: url('../images/layers/video-preview.png');
-    cursor: pointer;
-    color: #FFFFFF;
-    padding: 15px;
     display: none;
 }
 
-#video-preview img {
+#video-controls #play-pause-button {
+    width: 600px;
+    height: 400px;
     position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
+    right: 0;
+    background: url('../images/icons/ic_play_arrow_white_128dp.png') no-repeat center;
+    border: none;
+    z-index: 4;
+    cursor: pointer;
 }
 
-#video-preview .video-progress-bar {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
+#video-controls #progress-bar {
     height: 5px;
-    background-color: #FFFFFF;
+    margin: 0 15px 15px 15px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    width: 570px;
+    border: none;
+    background: #07B8C9;
 }
 
-#video-preview .done {
-    background-color: #07B8C9;
-    right: 350px;
+progress::-moz-progress-bar {
+    background: #07B8C9;
 }
 
-#geo-search {
-    width: 480px;
+progress::-webkit-progress-bar {
+    background: #FFFFFF;
+}
+
+progress::-webkit-progress-value {
+    background: #07B8C9;
+}
+
+#geocoder-container {
+    width: 540px;
     height: 75px;
     position: absolute;
     top: 135px;
     right: 30px;
     z-index: 2;
-    border: none;
     font-size: 25px;
-    padding: 0 30px;
     color: #212121;
     background: #FFFFFF url('../images/icons/ic_search_green_48dp.png') no-repeat right 15px center;
+}
+
+#geocoder-container div {
+    width: 100%;
+    box-shadow: none;
+    font: inherit;
+    position: inherit;
+    background-color: transparent;
+    min-width: inherit;
+    max-width: inherit;
+    z-index: inherit;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    box-sizing: inherit;
+}
+
+#geocoder-container .geocoder-icon-search {
+    background-image: none;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+}
+
+#geocoder-container input {
+    font-size: inherit;
+    width: inherit;
+    height: 75px;
+    padding: 10px 70px 10px 55px;
+}
+
+#geocoder-container ul {
+    margin-top: 15px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 16px;
+    -webkit-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1);
+}
+
+#geocoder-container ul li a {
+    padding: 15px;
+    border: none;
+}
+
+#geocoder-container .geocoder-pin-right {
+    right: 490px;
+    top: 16px;
 }

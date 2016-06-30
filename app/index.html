@@ -5,6 +5,8 @@
     <!-- endbower -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/main.css"/>
+
+
 </head>
 <body>
 <div class="box">
@@ -37,8 +39,12 @@
                     Light
                 </li>
             </ul>
-            <div  class="layer-list-head">Additional Layers</div>
-            <ul id="menu_list">
+            <div class="layer-list-head">Image Layers</div>
+            <ul id="image-list">
+
+            </ul>
+            <div class="layer-list-head">Video Layers</div>
+            <ul id="video-list">
                 <!--   <li id="layer-item-click-test">
                        <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45" alt="Inactive"
                             class="layer-list-image" id="layer-list-check-test"/>
@@ -96,26 +102,28 @@
         </ul>
     </div>
 
+    <video controls id="video-preview" class="shadow-medium"></video>
 
-    <video controls id="video-preview" class="shadow-medium">
-        <!--<source src="http://giv-disaster.uni-muenster.de/georefvideo/php/uploads/GEO1_20140504_155733.mp4" type="video/mp4">-->
-    </video>
+    <div id="video-controls">
+        <button id="play-pause-button" class="play"></button>
+        <progress id="progress-bar" min="0" max="100" value="0">0% played</progress>
+    </div>
 
-    <!-- <div id="video-preview" class="shadow-medium">
-         Video Layer 1
-         <img src="images/icons/ic_play_arrow_white_128dp.png" width="144" height="144" alt="Play"/>
-         <div class="video-progress-bar"></div>
-         <div class="video-progress-bar done"></div>
-     </div>-->
-    <input type="text" class="shadow-medium box-white rounded-corners" id="geo-search" title="Search for a location ..."
-           placeholder="Search for a location ..."/>
+    <div id="geocoder-container" class="rounded-corners shadow-small"></div>
 </div>
 <!-- bower:js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/mapbox-gl-js/mapbox-gl.js"></script>
+
 <!-- endbower -->
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.js"></script>
+<link rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.css"
+      type="text/css" />
 
 <script src="views/nav.js"></script>
 <script src="views/map.js"></script>
+<script src="views/video.js"></script>
 </body>
 </html>
