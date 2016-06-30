@@ -199,20 +199,45 @@ p {
     background-color: #FFFFFF;
     position: absolute;
     bottom: 0;
-    width: 480px;
+    width: 210px;
     height: 75px;
     padding: 30px 30px 0;
     font-size: 25px;
     color: #2E2E2E;
-    cursor: pointer;
+    white-space: nowrap;
 }
 
-#layer-list-export:hover {
+#layer-list-export-png {
+    left: 270px;
+}
+
+#layer-list-export-pdf {
+    left: 405px;
+}
+
+.layer-list-export-button {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 0;
+    width: 135px;
+    height: 75px;
+    padding: 15px 0;
+    cursor: pointer;
+    font-size: 25px;
+    color: #2E2E2E;
+    text-align: center;
+}
+
+.layer-list-export-button:hover {
     background-color: #F5F5F5;
 }
 
-#layer-list-export:active {
+.layer-list-export-button:active {
     background-color: #E0E0E0;
+}
+
+.layer-list-export-image {
+    vertical-align: middle;
 }
 
 .layer-list-image {
@@ -346,4 +371,8 @@ progress::-webkit-progress-value {
 #geocoder-container .geocoder-pin-right {
     right: 490px;
     top: 16px;
+}
+
+.mapboxgl-ctrl-attrib {
+    display: none;
 }
