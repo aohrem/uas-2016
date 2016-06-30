@@ -14,22 +14,20 @@ $(document).ready(function () {
             var img = new Image;
 
             img.onload = function () {
-                var width = img.width;
-                var height = img.height;
-                var aspectRatio = width / height;
+                var widthInMm = img.width / 5;
+                var heightInMm = img.height / 5;
+
                 var doc;
-                var widthInMm;
-                var heightInMm;
+
                 if (width > height) {
-                    doc = new jsPDF('landscape');
-                    widthInMm = 297;
-                    heightInMm = 297 / aspectRatio;
+                    doc = new jsPDF('l', 'mm', [widthInMm, heightInMm]);
                 } else {
-                    doc = new jsPDF();
-                    widthInMm = 297 * aspectRatio;
-                    heightInMm = 297;
+                    doc = new jsPDF('p', 'mm', [widthInMm, heightInMm]);
                 }
+
                 doc.addImage(dataURL, 'PNG', 0, 0, widthInMm, heightInMm);
+
+                
                 doc.save('renaagis-map-export.pdf')
             };
 

@@ -372,3 +372,7 @@ progress::-webkit-progress-value {
     right: 490px;
     top: 16px;
 }
+
+.mapboxgl-ctrl-attrib {
+    display: none;
+}
