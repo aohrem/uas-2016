@@ -199,26 +199,27 @@ p {
     background-color: #FFFFFF;
     position: absolute;
     bottom: 0;
-    width: 240px;
+    width: 210px;
     height: 75px;
     padding: 30px 30px 0;
     font-size: 25px;
     color: #2E2E2E;
+    white-space: nowrap;
 }
 
 #layer-list-export-png {
-    left: 300px;
+    left: 270px;
 }
 
 #layer-list-export-pdf {
-    left: 420px;
+    left: 405px;
 }
 
 .layer-list-export-button {
     background-color: #FFFFFF;
     position: absolute;
     bottom: 0;
-    width: 120px;
+    width: 135px;
     height: 75px;
     padding: 15px 0;
     cursor: pointer;
@@ -233,6 +234,10 @@ p {
 
 .layer-list-export-button:active {
     background-color: #E0E0E0;
+}
+
+.layer-list-export-image {
+    vertical-align: middle;
 }
 
 .layer-list-image {
