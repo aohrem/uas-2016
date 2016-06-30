@@ -3,7 +3,8 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/basic-v8',
     zoom: 14,
-    center: [7.5728, 51.9450]
+    center: [7.5728, 51.9450],
+    preserveDrawingBuffer: true
 });
 
 var geocoder = new mapboxgl.Geocoder({

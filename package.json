@@ -12,6 +12,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-notify": "^0.4.5",
     "jquery": "^2.2.3",
-    "mapbox-gl": "^0.18.0"
+    "mapbox-gl": "^0.18.0",
+    "jspdf": "~1.2.61"
   }
 }
