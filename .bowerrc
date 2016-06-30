@@ -1,0 +1,8 @@
+{
+  "directory": "bower_components",
+  "proxy": "http://wwwproxy.uni-muenster.de:80",
+  "https-proxy":"http://wwwproxy.uni-muenster.de:80",
+  "no-proxy":"giv-project4"
+}
+
+
