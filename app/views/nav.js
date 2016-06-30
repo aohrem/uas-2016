@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 var lastIndex
 
-function showVideo(index) {
+/*function showVideo(index) {
     if (videoPreviewOpen) {
         $('#video-preview').fadeOut();
         $('#video-controls').fadeOut();
@@ -85,6 +85,55 @@ function showVideo(index) {
         videoPreviewOpen = true;
     }
     lastIndex = index;
+}*/
+
+var player;
+
+function showVideo() {
+     if (videoPreviewOpen) {
+         $('#video-preview').fadeOut();
+         //$('#video-controls').fadeOut();
+         $('#layer-item-click-test').removeClass('active');
+         $('#layer-list-check-test').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+         videoPreviewOpen = false;
+     } else {
+         /*var videoUrl = "videos/video.mp4";
+         $('#video-preview').attr('src', videoUrl);
+         $('#video-preview').fadeIn();*/
+
+
+         var tag = document.createElement('script');
+         tag.src = "https://www.youtube.com/iframe_api";
+         var firstScriptTag = document.getElementsByTagName('script')[0];
+         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+         //$('#video-controls').fadeIn();
+         $('#layer-item-click-test').addClass('active');
+         $('#layer-list-check-test').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
+         videoPreviewOpen = true;
+     }
+ }
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video-preview', {
+        height: '390',
+        width: '640',
+        videoId: 'KlTNR7jBi-I',
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+    $('#video-preview').fadeIn();
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+
 }
 
 function menuClick() {
@@ -132,7 +181,18 @@ function openMap() {
 
 function loadVideosFromFTP(){
 
-    var url = 'https://api.myjson.com/bins/2jv68';
+    $('#video-list').append('<li id="layer-item-click-test" onClick="showVideo()">' +
+        '<img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45" alt="Inactive"' +
+        ' class="layer-list-image" id="layer-list-check-test"/>' +
+        '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
+        ' class="layer-list-image" id="layer-list-type-test"/> Video001' +
+        '<img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"' +
+        ' alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test"/>' +
+        '<img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"' +
+        ' class="video-layer-preview"/>'+
+        '</li>');
+
+    /*var url = 'https://api.myjson.com/bins/2jv68';
 
     $.getJSON( url,function(data) {
         videoArray.push(data.videos);
@@ -151,11 +211,11 @@ function loadVideosFromFTP(){
                 '</li>');
 
         });
-    });
+    });*/
 }
 var urlGjson = 'https://api.myjson.com/bins/53dp0';
 
-$.getJSON( urlGjson,function(data) {
+/*$.getJSON( urlGjson,function(data) {
     var geojson = data
     var route = new mapboxgl.GeoJSONSource({data: geojson });
     map.addSource("route",route);
@@ -187,7 +247,7 @@ $.getJSON( urlGjson,function(data) {
         }
     });
 
-    map.on('click', function (e) {
+   map.on('click', function (e) {
         // Use queryRenderedFeatures to get features at a click event's point
         // Use layer option to avoid getting results from other layers
         var features = map.queryRenderedFeatures(e.point, { layers: ['routePoints'] });
@@ -197,9 +257,9 @@ $.getJSON( urlGjson,function(data) {
             // Get coordinates from the symbol and center the map on those coordinates
             map.flyTo({center: features[0].properties.coordinates});
         }
-    });
+    })
 
     //map.flyTo({center: });
-});
+});*/
 
 console.log(map.sources);
