@@ -19,7 +19,7 @@ $(document).ready(function () {
 
                 var doc;
 
-                if (width > height) {
+                if (widthInMm > heightInMm) {
                     doc = new jsPDF('l', 'mm', [widthInMm, heightInMm]);
                 } else {
                     doc = new jsPDF('p', 'mm', [widthInMm, heightInMm]);
@@ -27,7 +27,7 @@ $(document).ready(function () {
 
                 doc.addImage(dataURL, 'PNG', 0, 0, widthInMm, heightInMm);
 
-                
+
                 doc.save('renaagis-map-export.pdf')
             };
 
