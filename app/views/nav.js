@@ -138,6 +138,7 @@ function onPlayerReady(event) {
     videoPreviewOpen = true;
     $('#video-preview').fadeIn();
     event.target.playVideo();
+    event.target.mute();
 }
 
 function onPlayerStateChange(event) {
