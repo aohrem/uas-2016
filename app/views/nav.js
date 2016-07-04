@@ -101,6 +101,7 @@ function toggleVideo() {
          $('#layer-item-click-test').removeClass('active');
          $('#layer-list-check-test').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
          $('#layer-list-type-test').attr('src', 'images/icons/ic_movie_grey_48dp.png');
+         $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_inactive.png');
          window['YT'] = null;
          videoPreviewOpen = false;
      } else {
@@ -117,6 +118,7 @@ function toggleVideo() {
          $('#layer-item-click-test').addClass('active');
          $('#layer-list-check-test').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
          $('#layer-list-type-test').attr('src', 'images/icons/ic_movie_darkgrey_48dp.png');
+         $('#layer-list-video-preview-test').attr('src', 'images/layers/preview/video_layer_1_active.png');
      }
  }
 
@@ -197,7 +199,7 @@ function loadVideosFromFTP(){
         '<img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45" alt="Inactive"' +
         ' class="layer-list-image" id="layer-list-check-test"/>' +
         '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
-        ' class="layer-list-image" id="layer-list-type-test"/> Video001' +
+        ' class="layer-list-image" id="layer-list-type-test"/> Test Flight 360°' +
         '<img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"' +
         ' alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test"/>' +
         '<img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"' +
