@@ -87,8 +87,16 @@
         </div>
         <div id="layer-list-export">
             <img src="images/icons/ic_file_download_green_48dp.png" width="45" height="45" alt="Export" id="export-img"
-                 class="layer-list-image"/>
-            Export map as PDF
+                 class="layer-list-export-image"/>
+            Export map as
+        </div>
+        <div class="layer-list-export-button" id="layer-list-export-png">
+            <img src="images/icons/ic_image_darkgrey_48dp.png" width="45" height="45" alt=".png"/><br/>
+            .png
+        </div>
+        <div class="layer-list-export-button" id="layer-list-export-pdf">
+            <img src="images/icons/ic_picture_as_pdf_darkgrey_48dp.png" width="45" height="45" alt=".pdf"/><br/>
+            .pdf
         </div>
     </div>
     <div class="shadow-large box-white rounded-corners" id="more-menu">
@@ -120,16 +128,23 @@
         <progress id="progress-bar" min="0" max="100" value="0">0% played</progress>
     </div>
 
-    <input type="text" class="shadow-medium box-white rounded-corners" id="geo-search" title="Search for a location ..."
-           placeholder="Search for a location ..."/>
+    <div id="geocoder-container" class="rounded-corners shadow-small"></div>
 </div>
 <!-- bower:js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/mapbox-gl-js/mapbox-gl.js"></script>
+<script src="../bower_components/jspdf/dist/jspdf.min.js"></script>
+
 <!-- endbower -->
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.js"></script>
+<link rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.css"
+      type="text/css" />
 
 <script src="views/nav.js"></script>
 <script src="views/map.js"></script>
 <script src="views/video.js"></script>
+<script src="views/export.js"></script>
 </body>
 </html>

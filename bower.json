@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "jquery": "~2.2.3",
-    "mapbox-gl-js": "~0.11.0"
+    "mapbox-gl-js": "~0.11.0",
+    "jspdf": "~1.2.61"
   }
 }

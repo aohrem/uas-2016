@@ -161,7 +161,7 @@ function openPage(item) {
     if (layerListOpen) {
         $('#layer-list').fadeOut();
     }
-    $('#geo-search').fadeOut();
+    $('#geocoder-container').fadeOut();
     $('#map').fadeOut(function () {
         $('#page').fadeIn();
     });
@@ -171,7 +171,7 @@ function openPage(item) {
 }
 
 function openMap() {
-    $('#geo-search').fadeIn();
+    $('#geocoder-container').fadeIn();
     $('#page').fadeOut(function () {
         $('#map').fadeIn();
     });
