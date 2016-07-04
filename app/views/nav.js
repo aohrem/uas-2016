@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 var lastIndex
 
-/*function showVideo(index) {
+/*function toggleVideo(index) {
     if (videoPreviewOpen) {
         $('#video-preview').fadeOut();
         $('#video-controls').fadeOut();
@@ -89,29 +89,34 @@ var lastIndex
 
 var player;
 
-function showVideo() {
+function toggleVideo() {
      if (videoPreviewOpen) {
-         $('#video-preview').fadeOut();
+         $('#video-preview').fadeOut(function () {
+             $('#video-preview').remove();
+             $('#youtube-script').remove();
+             $('#www-widgetapi-script').remove();
+             $('#video-container').html('<div id="video-preview" class="shadow-medium"></div>');
+         });
          //$('#video-controls').fadeOut();
          $('#layer-item-click-test').removeClass('active');
          $('#layer-list-check-test').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+         $('#layer-list-type-test').attr('src', 'images/icons/ic_movie_grey_48dp.png');
+         window['YT'] = null;
          videoPreviewOpen = false;
      } else {
          /*var videoUrl = "videos/video.mp4";
-         $('#video-preview').attr('src', videoUrl);
-         $('#video-preview').fadeIn();*/
-
+         $('#video-preview').attr('src', videoUrl);*/
 
          var tag = document.createElement('script');
          tag.src = "https://www.youtube.com/iframe_api";
+         tag.id = "youtube-script";
          var firstScriptTag = document.getElementsByTagName('script')[0];
          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 
          //$('#video-controls').fadeIn();
          $('#layer-item-click-test').addClass('active');
          $('#layer-list-check-test').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
-         videoPreviewOpen = true;
+         $('#layer-list-type-test').attr('src', 'images/icons/ic_movie_darkgrey_48dp.png');
      }
  }
 
@@ -125,10 +130,11 @@ function onYouTubeIframeAPIReady() {
             'onStateChange': onPlayerStateChange
         }
     });
-    $('#video-preview').fadeIn();
 }
 
 function onPlayerReady(event) {
+    videoPreviewOpen = true;
+    $('#video-preview').fadeIn();
     event.target.playVideo();
 }
 
@@ -160,6 +166,9 @@ function menuBackClick() {
 function openPage(item) {
     if (layerListOpen) {
         $('#layer-list').fadeOut();
+        if (videoPreviewOpen) {
+            $('#video-preview').fadeOut();
+        }
     }
     $('#geocoder-container').fadeOut();
     $('#map').fadeOut(function () {
@@ -175,13 +184,16 @@ function openMap() {
     $('#page').fadeOut(function () {
         $('#map').fadeIn();
     });
+    if (videoPreviewOpen) {
+        $('#video-preview').fadeIn();
+    }
     $('#menu').attr('src', 'images/icons/ic_menu_white_48dp.png');
     menuClick();
 }
 
 function loadVideosFromFTP(){
 
-    $('#video-list').append('<li id="layer-item-click-test" onClick="showVideo()">' +
+    $('#video-list').append('<li id="layer-item-click-test" onClick="toggleVideo()">' +
         '<img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45" alt="Inactive"' +
         ' class="layer-list-image" id="layer-list-check-test"/>' +
         '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
@@ -199,7 +211,7 @@ function loadVideosFromFTP(){
 
         $.each(videoArray[0], function(index, video) {
             // In this point the
-            $('#video-list').append('<li id="layer-item-click-test'+index+'" onClick="showVideo('+index+')">' +
+            $('#video-list').append('<li id="layer-item-click-test'+index+'" onClick="toggleVideo('+index+')">' +
                 '<img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45" alt="Inactive"' +
                 ' class="layer-list-image" id="layer-list-check-test'+index+'"/>' +
                 '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
