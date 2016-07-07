@@ -186,9 +186,9 @@ function menuBackClick() {
 function openPage(item) {
     if (layerListOpen) {
         $('#layer-list').fadeOut();
-        if (videoPreviewOpen) {
-            $('#video-preview').fadeOut();
-        }
+    }
+    if (videoPreviewOpen) {
+        $('#video-preview').fadeOut();
     }
     $('#geocoder-container').fadeOut();
     $('#map').fadeOut(function () {
