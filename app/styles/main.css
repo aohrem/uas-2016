@@ -9,6 +9,20 @@ html, body {
     background-color: #FAFAFA;
 }
 
+a, a:visited {
+    color: #00BCD4;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    color: #8BC34A;
+    text-decoration: none;
+}
+
 .box {
     display: flex;
     flex-flow: column;
@@ -142,6 +156,7 @@ html, body {
     width: 840px;
     padding: 15px 90px;
     text-align: justify;
+    line-height: 35px;
 }
 
 h1 {
