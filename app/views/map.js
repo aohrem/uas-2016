@@ -120,32 +120,6 @@ map.on('load', function () {
         }
     });
 
-});
-
-
-
-function tick() {
-    if (j < geojson_point.features.length && (tick_status==true)) {
-        var r = point[j].geometry.coordinates[2] * Math.tan(45 * Math.PI / 180);
-        point_route.coordinates[0] = geojson_point.features[j].geometry.coordinates[0];
-        point_route.coordinates[1] = geojson_point.features[j].geometry.coordinates[1];
-        source.setData(point_route);
-        radius_value = {
-            stops: [
-                [0, 0],
-                [20, r * 8.22714500187]
-            ],
-            base: 2
-        }
-        map.setPaintProperty('marker', 'circle-radius', radius_value)
-
-      j++;
-        setTimeout(tick, 1001);
-    }
-}
-
-map.on('load', function () {
-
     map.addSource("videoPoints", {
         type: "geojson",
         // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
@@ -194,5 +168,26 @@ map.on('load', function () {
         }
     });
 
-
 });
+
+
+
+function tick() {
+    if (j < geojson_point.features.length && (tick_status==true)) {
+        var r = point[j].geometry.coordinates[2] * Math.tan(45 * Math.PI / 180);
+        point_route.coordinates[0] = geojson_point.features[j].geometry.coordinates[0];
+        point_route.coordinates[1] = geojson_point.features[j].geometry.coordinates[1];
+        source.setData(point_route);
+        radius_value = {
+            stops: [
+                [0, 0],
+                [20, r * 8.22714500187]
+            ],
+            base: 2
+        }
+        map.setPaintProperty('marker', 'circle-radius', radius_value)
+
+      j++;
+        setTimeout(tick, 1001);
+    }
+}
