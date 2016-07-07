@@ -57,6 +57,23 @@ $(document).ready(function() {
     $.each(baseLayers, function (index, baseLayer) {
         $('#' + baseLayer).click(baseLayerCallback);
     });
+
+    var imageLayerCallback = function (event) {
+        var baseLayer = event.currentTarget.id;
+        if ($('#' + baseLayer + '-input').attr('src') != 'images/icons/ic_radio_button_checked_green_24dp.png') {
+            $('#' + baseLayer + '-input').attr('src', 'images/icons/ic_radio_button_checked_green_24dp.png');
+        }
+
+        $.each(baseLayers, function (index, layer) {
+            if (layer != baseLayer) {
+                $('#' + layer + '-input').attr('src', 'images/icons/ic_radio_button_unchecked_grey_24dp.png');
+            }
+        });
+    };
+
+    $.each(baseLayers, function (index, baseLayer) {
+        $('#' + baseLayer).click(baseLayerCallback);
+    });
 });
 
 var lastIndex
