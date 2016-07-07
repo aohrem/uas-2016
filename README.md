@@ -17,3 +17,7 @@ grunt
 ```
 
 Code license: GNU General Public License
+
+## Demo
+
+http://giv-project4.uni-muenster.de:9000/app/
