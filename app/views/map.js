@@ -38,7 +38,6 @@ map.on('load', function() {
     geocoder.on('result', function(ev) {
         map.getSource('single-point').setData(ev.result.geometry);
     });
-});
 
 var layerList = document.getElementById('baselayers');
 var inputs = layerList.getElementsByClassName('base-layer-input');
@@ -54,4 +53,32 @@ function switchLayer(layer) {
 for (var i = 0; i < inputs.length; i++) {
     inputs[i].onclick = switchLayer;
 }
+    ////Image Overlay Layers
+    $('#orthographic').click(function (){
+        map.setStyle('./styles/basic-v8_orthographic.json');
+        $('#geocoder-container').hide();
+    });
+
+    $('#classification').click(function (){
+        map.setStyle('./styles/basic-v8_classification.json');
+        $('#geocoder-container').hide();  
+    });
+
+    $('#ndvi').click(function (){
+        map.setStyle('./styles/basic-v8_NDVIndex.json');
+        $('#geocoder-container').hide();  
+    });
+
+    $('#gli').click(function (){
+        map.setStyle('./styles/basic-v8_GLI.json');
+        $('#geocoder-container').hide();  
+    });
+
+    $('#ndwi').click(function (){
+        map.setStyle('./styles/basic-v8_NDWI.json');
+        $('#geocoder-container').hide();  
+    });
+
+});
+
 

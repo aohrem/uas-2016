@@ -5,6 +5,8 @@
     <!-- endbower -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/main.css"/>
+    <link rel="stylesheet" 
+          href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" /> 
 
 
 </head>
@@ -40,7 +42,32 @@
                 </li>
             </ul>
             <div class="layer-list-head">Image Layers</div>
-            <ul id="image-list">
+            <ul id="imagelist">
+                <li id="orthographic" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         id="orthographic-input" alt="Base Layer" class="layer-list-image"/>
+                    Orthographic
+                </li>
+                <li id="classification" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         id="classification-input" alt="Base Layer" class="layer-list-image"/>
+                    Classification
+                </li>
+                <li id="ndvi" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         id="ndvi-input" alt="Base Layer" class="layer-list-image"/>
+                    NDVIndex
+                </li>
+                <li id="ndwi" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         id="ndwi-input" alt="Base Layer" class="layer-list-image"/>
+                    NDWI
+                </li>
+                <li id="gli" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         id="gli-input" alt="Base Layer" class="layer-list-image"/>
+                    GLI
+                </li>
 
             </ul>
             <div class="layer-list-head">Video Layers</div>
@@ -125,5 +152,6 @@
 <script src="views/nav.js"></script>
 <script src="views/map.js"></script>
 <script src="views/video.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 </body>
 </html>
