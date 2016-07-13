@@ -108,6 +108,17 @@ var player;
 
 function toggleVideo() {
      if (videoPreviewOpen) {
+j=0;
+         tick_status=false;
+          var visibility = map.getLayoutProperty('route', 'visibility');
+         if (visibility === 'visible') {
+             map.setLayoutProperty('route', 'visibility', 'none');
+         }
+         var visibility_point = map.getLayoutProperty('marker_poi', 'visibility');
+         if (visibility === 'visible') {
+             map.setLayoutProperty('marker_poi', 'visibility', 'none');
+             map.setLayoutProperty('marker_poi', 'visibility', 'none');
+         }
          $('#video-preview').fadeOut(function () {
              $('#video-preview').remove();
              $('#youtube-script').remove();

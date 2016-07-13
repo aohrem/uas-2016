@@ -40,8 +40,18 @@ function onPlayerStateChange(event) {
         // unstarted
     } else if (event.data == 0) {
         // ended
+
     } else if (event.data == 1) {
         // playing
+        var visibility = map.getLayoutProperty('route', 'visibility');
+        if (visibility === 'none') {
+            map.setLayoutProperty('route', 'visibility', 'visible');
+        }
+        var visibility_marker = map.getLayoutProperty('marker_poi', 'visibility');
+        if (visibility_marker === 'none') {
+            map.setLayoutProperty('marker_poi', 'visibility', 'visible');
+            map.setLayoutProperty('marker', 'visibility', 'visible');
+        }
         tick_status=true;
       j=Math.round(player.getCurrentTime());
         tick();
