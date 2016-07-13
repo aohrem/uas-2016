@@ -14,6 +14,31 @@ var geocoder = new mapboxgl.Geocoder({
 map.addControl(geocoder);
 // After the map style has loaded on the page, add a source layer and default
 // styling for a single point.
+map.on('load', function() {
+    map.addSource('single-point', {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": []
+        }
+    });
+
+    map.addLayer({
+        "id": "point",
+        "source": "single-point",
+        "type": "circle",
+        "paint": {
+            "circle-radius": 10,
+            "circle-color": "#007cbf"
+        }
+    });
+
+    // Listen for the `geocoder.input` event that is triggered when a user
+    // makes a selection and add a marker that matches the result.
+    geocoder.on('result', function(ev) {
+        map.getSource('single-point').setData(ev.result.geometry);
+    });
+
 var j;
 var tick_status;
 var interval;
@@ -31,6 +56,34 @@ function switchLayer(layer) {
 for (var i = 0; i < inputs.length; i++) {
     inputs[i].onclick = switchLayer;
 }
+    ////Image Overlay Layers
+    $('#orthographic').click(function (){
+        map.setStyle('./styles/basic-v8_orthographic.json');
+        $('#geocoder-container').hide();
+    });
+
+    $('#classification').click(function (){
+        map.setStyle('./styles/basic-v8_classification.json');
+        $('#geocoder-container').hide();  
+    });
+
+    $('#ndvi').click(function (){
+        map.setStyle('./styles/basic-v8_NDVIndex.json');
+        $('#geocoder-container').hide();  
+    });
+
+    $('#gli').click(function (){
+        map.setStyle('./styles/basic-v8_GLI.json');
+        $('#geocoder-container').hide();  
+    });
+
+    $('#ndwi').click(function (){
+        map.setStyle('./styles/basic-v8_NDWI.json');
+        $('#geocoder-container').hide();  
+    });
+
+});
+
 var point=geojson_point.features;
 //Make geojson linestring from points
 var path_geojson = { type: 'LineString', coordinates: [] };
