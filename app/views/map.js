@@ -11,10 +11,17 @@ var geocoder = new mapboxgl.Geocoder({
     container: 'geocoder-container'
 });
 
+
+var j;
+var tick_status;
+var interval;
+var layerList = document.getElementById('baselayers');
+var inputs = layerList.getElementsByClassName('base-layer-input');
+
 map.addControl(geocoder);
 // After the map style has loaded on the page, add a source layer and default
 // styling for a single point.
-map.on('load', function() {
+map.on('load', function () {
     map.addSource('single-point', {
         "type": "geojson",
         "data": {
@@ -35,59 +42,49 @@ map.on('load', function() {
 
     // Listen for the `geocoder.input` event that is triggered when a user
     // makes a selection and add a marker that matches the result.
-    geocoder.on('result', function(ev) {
+    geocoder.on('result', function (ev) {
         map.getSource('single-point').setData(ev.result.geometry);
     });
 
-var j;
-var tick_status;
-var interval;
-var layerList = document.getElementById('baselayers');
-var inputs = layerList.getElementsByClassName('base-layer-input');
-
-function switchLayer(layer) {
-    var layerId = layer.target.id;
-    if (layerId.toString().indexOf('-input') > -1) {
-        layerId = layerId.toString().replace('-input', '');
+    function switchLayer(layer) {
+        var layerId = layer.target.id;
+        if (layerId.toString().indexOf('-input') > -1) {
+            layerId = layerId.toString().replace('-input', '');
+        }
+        map.setStyle('mapbox://styles/mapbox/' + layerId + '-v8');
     }
-    map.setStyle('mapbox://styles/mapbox/' + layerId + '-v8');
-}
 
-for (var i = 0; i < inputs.length; i++) {
-    inputs[i].onclick = switchLayer;
-}
-    ////Image Overlay Layers
-    $('#orthographic').click(function (){
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].onclick = switchLayer;
+    }
+
+    //Image Overlay Layers
+    $('#orthographic').click(function () {
         map.setStyle('./styles/basic-v8_orthographic.json');
-        $('#geocoder-container').hide();
     });
 
-    $('#classification').click(function (){
+    $('#classification').click(function () {
         map.setStyle('./styles/basic-v8_classification.json');
-        $('#geocoder-container').hide();  
     });
 
-    $('#ndvi').click(function (){
+    $('#ndvi').click(function () {
         map.setStyle('./styles/basic-v8_NDVIndex.json');
-        $('#geocoder-container').hide();  
     });
 
-    $('#gli').click(function (){
+    $('#gli').click(function () {
         map.setStyle('./styles/basic-v8_GLI.json');
-        $('#geocoder-container').hide();  
     });
 
-    $('#ndwi').click(function (){
+    $('#ndwi').click(function () {
         map.setStyle('./styles/basic-v8_NDWI.json');
-        $('#geocoder-container').hide();  
     });
 
 });
 
-var point=geojson_point.features;
+var point = geojson_point.features;
 //Make geojson linestring from points
-var path_geojson = { type: 'LineString', coordinates: [] };
-for (i=0;i<point.length;i++){
+var path_geojson = {type: 'LineString', coordinates: []};
+for (i = 0; i < point.length; i++) {
     //  console.log(point[i]);
     path_geojson.coordinates.push(point[i].geometry.coordinates);
 }
@@ -106,7 +103,7 @@ map.on('load', function () {
 
     // Listen for the `geocoder.input` event that is triggered when a user
     // makes a selection and add a marker that matches the result.
-    geocoder.on('result', function(ev) {
+    geocoder.on('result', function (ev) {
         map.getSource('single-point').setData(ev.result.geometry);
     });
     // add linestring
@@ -120,7 +117,7 @@ map.on('load', function () {
         "type": "line",
         "source": "UAV_route",
         "layout": {
-            "visibility":'none',
+            "visibility": 'none',
             "line-join": "round",
             "line-cap": "round"
         },
@@ -130,24 +127,22 @@ map.on('load', function () {
         }
     });
 
- //   console.log(visibility);
-    // Add geojson flight marker in map
-
-    map.addSource("markers",source);
+    map.addSource("markers", source);
     map.addLayer({
         "id": 'marker',
         "type": "circle",
         "source": "markers",
         'paint': {
-            "visibility":'none',
+            "visibility": 'none',
             'circle-radius': {
                 stops: [
                     [0, 0],
-                    [20, 50*8.22714500187]
+                    [20, 50 * 8.22714500187]
                 ],
-                base: 2},
-            'circle-opacity':0.35,
-            "circle-color":'#00BCD4'
+                base: 2
+            },
+            'circle-opacity': 0.35,
+            "circle-color": '#00BCD4'
         }
     });
     map.addLayer({
@@ -155,8 +150,8 @@ map.on('load', function () {
         "type": "symbol",
         "source": "markers",
         "layout": {
-            "visibility":'none',
-             "icon-image": "airport-15"
+            "visibility": 'none',
+            "icon-image": "airport-15"
         }
     });
 
@@ -166,8 +161,9 @@ function tick() {
     console.log("tick");
     clearInterval(interval);
     interval = setInterval(movemarker, 1001)
-};
-function movemarker () {
+}
+
+function movemarker() {
     if (j < geojson_point.features.length && (tick_status == true)) {
         var r = point[j].geometry.coordinates[2] * Math.tan(70 * Math.PI / 180);
         point_route.coordinates[0] = geojson_point.features[j].geometry.coordinates[0];
@@ -179,8 +175,8 @@ function movemarker () {
                 [20, r * 8.22714500187]
             ],
             base: 2
-        }
-        map.setPaintProperty('marker', 'circle-radius', radius_value)
+        };
+        map.setPaintProperty('marker', 'circle-radius', radius_value);
         j++;
 
         console.log(j);
