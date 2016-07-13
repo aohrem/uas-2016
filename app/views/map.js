@@ -72,8 +72,8 @@ map.on('load', function () {
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "#cc33ff",
-            "line-width": 4
+            "line-color": "#8BC34A",
+            "line-width": 6
         }
     });
 
@@ -94,7 +94,7 @@ map.on('load', function () {
                 ],
                 base: 2},
             'circle-opacity':0.35,
-            "circle-color":'orange'
+            "circle-color":'#00BCD4'
         }
     });
     map.addLayer({
