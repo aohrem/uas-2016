@@ -1,4 +1,4 @@
-const baseLayers = ['streets', 'satellite', 'light', 'orthographic', 'classification', 'ndvi', 'gli', 'ndwi'];
+const baseLayers = ['basic', 'streets', 'satellite', 'light', 'orthographic', 'classification', 'ndvi', 'gli', 'ndwi'];
 var layerListOpen = false;
 var videoPreviewOpen = false;
 var videoArray = [];
