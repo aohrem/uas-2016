@@ -95,6 +95,8 @@ function toggleVideo() {
         videoPreviewOpen = false;
     }
     else {
+        j = 0;
+        tick_status = true;
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         tag.id = "youtube-script";
@@ -145,13 +147,13 @@ function onPlayerStateChange(event) {
             map.setLayoutProperty('marker_poi', 'visibility', 'visible');
             map.setLayoutProperty('marker', 'visibility', 'visible');
         }
-        tick_status=true;
-        j=Math.round(player.getCurrentTime());
+        tick_status = true;
+        j = Math.round(player.getCurrentTime());
         tick();
 
     } else if (event.data == 2) {
         // paused
-        tick_status=false;
+        tick_status = false;
 
     } else if (event.data == 3) {
         // buffering
