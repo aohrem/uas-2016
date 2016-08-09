@@ -158,7 +158,6 @@ map.on('load', function () {
 });
 
 function tick() {
-    console.log("tick");
     clearInterval(interval);
     interval = setInterval(movemarker, 1001)
 }
@@ -178,13 +177,8 @@ function movemarker() {
         };
         map.setPaintProperty('marker', 'circle-radius', radius_value);
         j++;
-
-        console.log(j);
-
     }
     else {
         clearInterval(interval);
     }
-
-
 }

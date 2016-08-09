@@ -1,7 +1,6 @@
 const baseLayers = ['basic', 'streets', 'satellite', 'light', 'orthographic', 'classification', 'ndvi', 'gli', 'ndwi'];
 var layerListOpen = false;
 var videoPreviewOpen = false;
-var videoArray = [];
 
 $(document).ready(function () {
     var moreMenuOpen = false;
@@ -96,7 +95,6 @@ function toggleVideo() {
         videoPreviewOpen = false;
     }
     else {
-        tick_status = true;
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         tag.id = "youtube-script";
@@ -131,7 +129,35 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
+    if (event.data == -1) {
+        // unstarted
+    } else if (event.data == 0) {
+        // ended
 
+    } else if (event.data == 1) {
+        // playing
+        var visibility = map.getLayoutProperty('route', 'visibility');
+        if (visibility === 'none') {
+            map.setLayoutProperty('route', 'visibility', 'visible');
+        }
+        var visibility_marker = map.getLayoutProperty('marker_poi', 'visibility');
+        if (visibility_marker === 'none') {
+            map.setLayoutProperty('marker_poi', 'visibility', 'visible');
+            map.setLayoutProperty('marker', 'visibility', 'visible');
+        }
+        tick_status=true;
+        j=Math.round(player.getCurrentTime());
+        tick();
+
+    } else if (event.data == 2) {
+        // paused
+        tick_status=false;
+
+    } else if (event.data == 3) {
+        // buffering
+    } else if (playerStatus == 5) {
+        // video cued
+    }
 }
 
 function menuClick() {
@@ -182,12 +208,3 @@ function openMap() {
     $('#menu').attr('src', 'images/icons/ic_menu_white_48dp.png');
     menuClick();
 }
-
-map.on('click', function (e) {
-    var features = map.queryRenderedFeatures(e.point, {layers: ['routePoints']});
-    if (features.length) {
-        map.flyTo({center: features[0].properties.coordinates});
-    }
-});
-
-console.log(map.sources);
