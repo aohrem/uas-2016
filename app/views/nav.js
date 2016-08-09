@@ -6,7 +6,6 @@ var videoArray = [];
 $(document).ready(function () {
     var moreMenuOpen = false;
 
-    loadVideosFromFTP();
     menuClick();
 
     $('html').click(function () {
@@ -58,16 +57,11 @@ $(document).ready(function () {
         $('#' + baseLayer).click(baseLayerCallback);
     });
 
-    var imageLayerCallback = function (event) {
-        var baseLayer = event.currentTarget.id;
-    };
-
     $.each(baseLayers, function (index, baseLayer) {
         $('#' + baseLayer).click(baseLayerCallback);
     });
 });
 
-var lastIndex;
 var player;
 
 function toggleVideo() {
@@ -102,6 +96,7 @@ function toggleVideo() {
         videoPreviewOpen = false;
     }
     else {
+        tick_status = true;
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         tag.id = "youtube-script";
@@ -186,20 +181,6 @@ function openMap() {
     }
     $('#menu').attr('src', 'images/icons/ic_menu_white_48dp.png');
     menuClick();
-}
-
-function loadVideosFromFTP() {
-
-    $('#video-list').append('<li id="layer-item-click-test" onClick="toggleVideo()">' +
-        '<img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45" alt="Inactive"' +
-        ' class="layer-list-image" id="layer-list-check-test"/>' +
-        '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
-        ' class="layer-list-image" id="layer-list-type-test"/> Test Flight 360°' +
-        '<img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"' +
-        ' alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test"/>' +
-        '<img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"' +
-        ' class="video-layer-preview"/>' +
-        '</li>');
 }
 
 map.on('click', function (e) {
