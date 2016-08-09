@@ -160,8 +160,13 @@ function addRoute() {
         });
     });
 
+    map.on('mousemove', function (e) {
+        var features = map.queryRenderedFeatures(e.point, {layers: ['route'], radius: 10});
+        map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+    });
+
     map.on('click', function (e) {
-        var features = map.queryRenderedFeatures(e.point, {layers: ['route']});
+        var features = map.queryRenderedFeatures(e.point, {layers: ['route'], radius: 10});
 
         if (!features.length) {
             return;
@@ -191,25 +196,7 @@ function getPointIndexByCoordinates(coordinates) {
 }
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
-    // return Math.sqrt(Math.pow(lat2 - lat1, 2) + Math.pow(lon2 - lon1, 2));
-    if (typeof(Number.prototype.toRadians) === "undefined") {
-        Number.prototype.toRadians = function() {
-            return this * Math.PI / 180;
-        }
-    }
-
-    var R = 6371e3; // metres
-    var φ1 = lat1.toRadians();
-    var φ2 = lat2.toRadians();
-    var Δφ = (lat2-lat1).toRadians();
-    var Δλ = (lon2-lon1).toRadians();
-
-    var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-        Math.cos(φ1) * Math.cos(φ2) *
-        Math.sin(Δλ/2) * Math.sin(Δλ/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-    return d = R * c;
+    return Math.sqrt(Math.pow(lat2 - lat1, 2) + Math.pow(lon2 - lon1, 2));
 }
 
 addRoute();
