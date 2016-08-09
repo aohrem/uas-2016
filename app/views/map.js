@@ -61,22 +61,27 @@ map.on('load', function () {
     //Image Overlay Layers
     $('#orthographic').click(function () {
         map.setStyle('./styles/basic-v8_orthographic.json');
+        addRoute();
     });
 
     $('#classification').click(function () {
         map.setStyle('./styles/basic-v8_classification.json');
+        addRoute();
     });
 
     $('#ndvi').click(function () {
         map.setStyle('./styles/basic-v8_NDVIndex.json');
+        addRoute();
     });
 
     $('#gli').click(function () {
         map.setStyle('./styles/basic-v8_GLI.json');
+        addRoute();
     });
 
     $('#ndwi').click(function () {
         map.setStyle('./styles/basic-v8_NDWI.json');
+        addRoute();
     });
 
 });
@@ -99,66 +104,104 @@ var source = new mapboxgl.GeoJSONSource({
     data: point_route
 });
 
-map.on('load', function () {
+function addRoute() {
+    map.on('load', function () {
+        // Listen for the `geocoder.input` event that is triggered when a user
+        // makes a selection and add a marker that matches the result.
+        geocoder.on('result', function (ev) {
+            map.getSource('single-point').setData(ev.result.geometry);
+        });
+        // add linestring
+        map.addSource("UAV_route", {
+            "type": "geojson",
+            "data": path_geojson
+        });
 
-    // Listen for the `geocoder.input` event that is triggered when a user
-    // makes a selection and add a marker that matches the result.
-    geocoder.on('result', function (ev) {
-        map.getSource('single-point').setData(ev.result.geometry);
-    });
-    // add linestring
-    map.addSource("UAV_route", {
-        "type": "geojson",
-        "data": path_geojson
-    });
-
-    map.addLayer({
-        "id": "route",
-        "type": "line",
-        "source": "UAV_route",
-        "layout": {
-            "visibility": 'none',
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        "paint": {
-            "line-color": "#8BC34A",
-            "line-width": 6
-        }
-    });
-
-    map.addSource("markers", source);
-    map.addLayer({
-        "id": 'marker',
-        "type": "circle",
-        "source": "markers",
-        'paint': {
-            "visibility": 'none',
-            'circle-radius': {
-                stops: [
-                    [0, 0],
-                    [20, 50 * 8.22714500187]
-                ],
-                base: 2
+        map.addLayer({
+            "id": "route",
+            "type": "line",
+            "source": "UAV_route",
+            "layout": {
+                "visibility": 'none',
+                "line-join": "round",
+                "line-cap": "round"
             },
-            'circle-opacity': 0.35,
-            "circle-color": '#00BCD4'
-        }
-    });
-    map.addLayer({
-        "id": 'marker_poi',
-        "type": "symbol",
-        "source": "markers",
-        "layout": {
-            "visibility": 'none',
-            "icon-image": "airport-15"
-        }
+            "paint": {
+                "line-color": "#8BC34A",
+                "line-width": 6
+            }
+        });
+
+        map.addSource("markers", source);
+        map.addLayer({
+            "id": 'marker',
+            "type": "circle",
+            "source": "markers",
+            'paint': {
+                'circle-radius': {
+                    stops: [
+                        [0, 0],
+                        [20, 50 * 8.22714500187]
+                    ],
+                    base: 2
+                },
+                'circle-opacity': 0.35,
+                "circle-color": '#00BCD4'
+            }
+        });
+        map.addLayer({
+            "id": 'marker_poi',
+            "type": "symbol",
+            "source": "markers",
+            "layout": {
+                "visibility": 'none',
+                "icon-image": "airport-15"
+            }
+        });
     });
 
-});
+    map.on('mousemove', function (e) {
+        var features = map.queryRenderedFeatures(e.point, {layers: ['route'], radius: 10});
+        map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+    });
+
+    map.on('click', function (e) {
+        var features = map.queryRenderedFeatures(e.point, {layers: ['route'], radius: 10});
+
+        if (!features.length) {
+            return;
+        }
+
+        var feature = features[0];
+        var coordinates = map.unproject(e.point);
+        var p = getPointIndexByCoordinates(coordinates);
+        player.seekTo(point[p].properties.time + 37, true);
+    });
+}
+
+function getPointIndexByCoordinates(coordinates) {
+    var minDist = null;
+    var minDistPoint = null;
+    for (i = 0; i < point.length; i++) {
+        var lon = point[i].geometry.coordinates[0];
+        var lat = point[i].geometry.coordinates[1];
+        var distance = calculateDistance(parseFloat(lat), parseFloat(lon), parseFloat(coordinates.lat),
+            parseFloat(coordinates.lng));
+        if (minDist == null || distance < minDist) {
+            minDist = distance;
+            minDistPoint = i;
+        }
+    }
+    return minDistPoint;
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    return Math.sqrt(Math.pow(lat2 - lat1, 2) + Math.pow(lon2 - lon1, 2));
+}
+
+addRoute();
 
 function tick() {
-    console.log("tick");
     clearInterval(interval);
     interval = setInterval(movemarker, 1001)
 }
@@ -178,13 +221,8 @@ function movemarker() {
         };
         map.setPaintProperty('marker', 'circle-radius', radius_value);
         j++;
-
-        console.log(j);
-
     }
     else {
         clearInterval(interval);
     }
-
-
 }

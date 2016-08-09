@@ -1,12 +1,10 @@
-const baseLayers = ['streets', 'satellite', 'light', 'orthographic', 'classification', 'ndvi', 'gli', 'ndwi'];
+const baseLayers = ['basic', 'streets', 'satellite', 'light', 'orthographic', 'classification', 'ndvi', 'gli', 'ndwi'];
 var layerListOpen = false;
 var videoPreviewOpen = false;
-var videoArray = [];
 
 $(document).ready(function () {
     var moreMenuOpen = false;
 
-    loadVideosFromFTP();
     menuClick();
 
     $('html').click(function () {
@@ -58,16 +56,11 @@ $(document).ready(function () {
         $('#' + baseLayer).click(baseLayerCallback);
     });
 
-    var imageLayerCallback = function (event) {
-        var baseLayer = event.currentTarget.id;
-    };
-
     $.each(baseLayers, function (index, baseLayer) {
         $('#' + baseLayer).click(baseLayerCallback);
     });
 });
 
-var lastIndex;
 var player;
 
 function toggleVideo() {
@@ -102,6 +95,8 @@ function toggleVideo() {
         videoPreviewOpen = false;
     }
     else {
+        j = 0;
+        tick_status = true;
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         tag.id = "youtube-script";
@@ -136,7 +131,35 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
+    if (event.data == -1) {
+        // unstarted
+    } else if (event.data == 0) {
+        // ended
 
+    } else if (event.data == 1) {
+        // playing
+        var visibility = map.getLayoutProperty('route', 'visibility');
+        if (visibility === 'none') {
+            map.setLayoutProperty('route', 'visibility', 'visible');
+        }
+        var visibility_marker = map.getLayoutProperty('marker_poi', 'visibility');
+        if (visibility_marker === 'none') {
+            map.setLayoutProperty('marker_poi', 'visibility', 'visible');
+            map.setLayoutProperty('marker', 'visibility', 'visible');
+        }
+        tick_status = true;
+        j = Math.round(player.getCurrentTime());
+        tick();
+
+    } else if (event.data == 2) {
+        // paused
+        tick_status = false;
+
+    } else if (event.data == 3) {
+        // buffering
+    } else if (playerStatus == 5) {
+        // video cued
+    }
 }
 
 function menuClick() {
@@ -187,26 +210,3 @@ function openMap() {
     $('#menu').attr('src', 'images/icons/ic_menu_white_48dp.png');
     menuClick();
 }
-
-function loadVideosFromFTP() {
-
-    $('#video-list').append('<li id="layer-item-click-test" onClick="toggleVideo()">' +
-        '<img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45" alt="Inactive"' +
-        ' class="layer-list-image" id="layer-list-check-test"/>' +
-        '<img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"' +
-        ' class="layer-list-image" id="layer-list-type-test"/> Test Flight 360°' +
-        '<img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"' +
-        ' alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test"/>' +
-        '<img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"' +
-        ' class="video-layer-preview"/>' +
-        '</li>');
-}
-
-map.on('click', function (e) {
-    var features = map.queryRenderedFeatures(e.point, {layers: ['routePoints']});
-    if (features.length) {
-        map.flyTo({center: features[0].properties.coordinates});
-    }
-});
-
-console.log(map.sources);

@@ -6,6 +6,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/main.css"/>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    <link rel="stylesheet"
+          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.css"
+          type="text/css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.css" rel="stylesheet" />
 </head>
 <body>
 <div class="box">
@@ -22,8 +26,13 @@
         <div class="layer-list-box">
             <div class="layer-list-head">Base Layers</div>
             <ul id="baselayers">
-                <li id="streets" class="base-layer-input">
+                <li id="basic" class="base-layer-input">
                     <img src="images/icons/ic_radio_button_checked_green_24dp.png" width="45" height="45"
+                         id="basic-input" alt="Base Layer" class="layer-list-image"/>
+                    Basic
+                </li>
+                <li id="streets" class="base-layer-input">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
                          id="streets-input" alt="Base Layer" class="layer-list-image"/>
                     Streets
                 </li>
@@ -68,46 +77,16 @@
             </ul>
             <div class="layer-list-head">Video Layers</div>
             <ul id="video-list">
-                <!--   <li id="layer-item-click-test">
-                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45" alt="Inactive"
-                            class="layer-list-image" id="layer-list-check-test"/>
-                       <img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"
-                            class="layer-list-image" id="layer-list-type-test"/>
-                       Video Layer 1
-                       <img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"
-                            alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test"/>
-                       <img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"
-                            class="video-layer-preview"/>
-                   </li>
-                   <li>
-                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45"
-                            alt="Inactive" class="layer-list-image"/>
-                       <img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"
-                            class="layer-list-image"/>
-                       Video Layer 2
-                       <img src="images/layers/preview/video_layer_2_inactive.png" width="45" height="45"
-                            alt="Video Layer Preview" class="video-layer-preview"/>
-                       <img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45" alt="Video Preview"
-                            class="video-layer-preview"/>
-                   </li>
-                   <li>
-                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45"
-                            alt="Inactive" class="layer-list-image"/>
-                       <img src="images/icons/ic_image_grey_48dp.png" width="45" height="45" alt="Image Layer"
-                            class="layer-list-image"/>
-                       Image Layer 1
-                       <img src="images/layers/preview/image_layer_1_inactive.png" width="45" height="45"
-                            alt="Image Layer Preview" class="video-layer-preview"/>
-                   </li>
-                   <li>
-                       <img src="images/icons/ic_check_box_outline_grey_24dp.png" width="45" height="45"
-                            alt="Inactive" class="layer-list-image"/>
-                       <img src="images/icons/ic_image_grey_48dp.png" width="45" height="45" alt="Image Layer"
-                            class="layer-list-image"/>
-                       Image Layer 2
-                       <img src="images/layers/preview/image_layer_2_inactive.png" width="45" height="45"
-                            alt="Video Layer Preview" class="video-layer-preview"/>
-                   </li>-->
+                <li id="layer-item-click-test" onClick="toggleVideo()">
+                    <img src="images/icons/ic_radio_button_unchecked_grey_24dp.png" width="45" height="45"
+                         alt="Inactive" class="layer-list-image" id="layer-list-check-test"/>
+                    <img src="images/icons/ic_movie_grey_48dp.png" width="45" height="45" alt="Video Layer"
+                         class="layer-list-image" id="layer-list-type-test"/> Test Flight 360°
+                    <img src="images/layers/preview/video_layer_1_inactive.png" width="45" height="45"
+                         alt="Video Layer Preview" class="video-layer-preview" id="layer-list-video-preview-test"/>
+                    <img src="images/icons/ic_play_arrow_white_48dp.png" width="45" height="45"
+                         alt="Video Preview" class="video-layer-preview"/>
+                </li>
             </ul>
         </div>
         <div id="layer-list-export">
@@ -133,20 +112,7 @@
         </ul>
     </div>
 
-    <!--<video controls id="video-preview" class="shadow-medium">
-        <source id="3gp_src"
-                type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        </source>
-    </video>-->
-
     <div id="video-container"><div id="video-preview" class="shadow-medium"></div></div>
-
-    <!--<iframe id="video-preview"
-            width="640" height="360"
-            src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1"
-            frameborder="0"
-            style="border: solid 4px #37474F"
-    ></iframe>-->
 
     <div id="video-controls">
         <button id="play-pause-button" class="play"></button>
@@ -155,22 +121,17 @@
 
     <div id="geocoder-container" class="rounded-corners shadow-small"></div>
 </div>
+
 <!-- bower:js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/mapbox-gl-js/mapbox-gl.js"></script>
 <script src="../bower_components/jspdf/dist/jspdf.min.js"></script>
-
 <!-- endbower -->
 
+<script src="https://api.mapbox.com/mapbox-gl-js/v0.21.0/mapbox-gl.js"></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.js"></script>
-<link rel="stylesheet"
-      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.1.0/mapbox-gl-geocoder.css"
-      type="text/css" />
-
-<script src="views/nav.js"></script>
+<script src="views/main.js"></script>
 <script src="views/waypoints.js"></script>
 <script src="views/map.js"></script>
-<script src="views/video.js"></script>
 <script src="views/export.js"></script>
 <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 </body>
